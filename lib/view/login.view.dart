@@ -37,7 +37,7 @@ class LoginView extends StatelessWidget {
               Text(
                 'Login to your account',
                 style: TextStyle(
-                  color: GlobalColors.TextColor,
+                  color: GlobalColors.textColor,
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
                 ),
@@ -65,14 +65,33 @@ class LoginView extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
+              const SizedBox(
+                height: 20,
+              ),
               const SocialLogin(),
-              const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
-                  'Don\'t have an account?',
-                )
-              ])
             ]),
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 50,
+        alignment: Alignment.center,
+        color: Colors.white,
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Don\'t have an account? ',
+            ),
+            InkWell(
+              onTap: null,
+              child: Text(
+                'Sign Up',
+                style: TextStyle(
+                    color: Colors.blue, decoration: TextDecoration.underline),
+              ),
+            ),
+          ],
         ),
       ),
     );
