@@ -61,7 +61,10 @@ class LoginView extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              ButtonGlobal(),
+              ButtonGlobal(
+                inputText:
+                    (emailController.text + ' ' + passwordController.text),
+              ),
               const SizedBox(
                 height: 30,
               ),

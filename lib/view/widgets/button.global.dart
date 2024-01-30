@@ -2,13 +2,14 @@ import 'package:exampp/utils/global.colors.dart';
 import 'package:flutter/material.dart';
 
 class ButtonGlobal extends StatelessWidget {
-  const ButtonGlobal({super.key});
+  const ButtonGlobal({Key? key, required this.inputText}) : super(key: key);
+  final String inputText;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print('Login');
+        print(inputText);
       },
       child: Container(
         alignment: Alignment.center,
