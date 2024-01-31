@@ -17,7 +17,7 @@ class LoginView extends StatelessWidget {
           child: Container(
             // color: Colors.green,
             width: double.infinity,
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
@@ -63,6 +63,7 @@ class LoginView extends StatelessWidget {
               ),
               ButtonGlobal(
                 inputText:
+                    // ignore: prefer_interpolation_to_compose_strings
                     (emailController.text + ' ' + passwordController.text),
               ),
               const SizedBox(
