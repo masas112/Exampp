@@ -15,6 +15,11 @@ class LoginView extends StatelessWidget {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bg_orange.png'),
+              ),
+            ),
             // color: Colors.green,
             width: double.infinity,
             padding: const EdgeInsets.all(15.0),

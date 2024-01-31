@@ -3,9 +3,42 @@ import 'dart:async';
 import 'package:exampp/view/login.view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stroke_text/stroke_text.dart';
 
-class SplashView extends StatelessWidget {
-  const SplashView({Key? key}) : super(key: key);
+class SplashView extends StatefulWidget {
+  const SplashView({super.key});
+
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
+  late AnimationController animation;
+  late Animation<double> fadeInFadeOut;
+
+  @override
+  void initState() {
+    super.initState();
+    animation = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+    fadeInFadeOut = Tween<double>(begin: 0.0, end: 1.0).animate(animation);
+
+    animation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Timer(
+          const Duration(seconds: 3),
+          () {
+            Get.to(LoginView());
+          },
+        );
+      } else if (status == AnimationStatus.dismissed) {
+        animation.forward();
+      }
+    });
+    animation.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,64 +52,93 @@ class SplashView extends StatelessWidget {
       return 0;
     }
 
-    Timer(const Duration(seconds: 5), () {
-      // Get.to(LoginView());
-    });
+    // Timer(const Duration(seconds: 5), () {
+    //   // Get.to(LoginView());
+    // });
 
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
+            image: AssetImage('assets/images/bg_orange.png'),
+            // image: AssetImage('assets/images/buriza.png'),
             fit: BoxFit.cover,
           ),
         ),
         child: Padding(
           padding: EdgeInsets.only(
-              top: halfScreen(1, inputSize: 100),
-              bottom: halfScreen(1, inputSize: 100),
-              left: halfScreen(2, inputSize: 100),
-              right: halfScreen(2, inputSize: 100)),
+              top: halfScreen(1, inputSize: 135),
+              bottom: halfScreen(1, inputSize: 135),
+              left: halfScreen(2, inputSize: 135),
+              right: halfScreen(2, inputSize: 135)),
           child: Container(
             // color: Colors.blue,
             alignment: Alignment.center,
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: Image(
-                    image: AssetImage('assets/images/logo.png'),
-                  ),
-                ),
-                SizedBox(height: 7),
-                Expanded(
-                  child: Text(
-                    'SMP RAHMAT\nSURABAYA',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Times New Roman',
-                      color: Colors.green,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.5,
-                      wordSpacing: 0.5,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black,
-                          offset: Offset(1, 1),
-                          blurRadius: 0.5,
-                        ),
-                        Shadow(
-                          color: Colors.black,
-                          offset: Offset(3, 3),
-                          blurRadius: 0.5,
-                        )
-                      ],
+            child: FadeTransition(
+              opacity: fadeInFadeOut,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const Expanded(
+                    flex: 1,
+                    child: Image(
+                      image: AssetImage('assets/images/logo.png'),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 7),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Column(
+                        children: [
+                          StrokeText(
+                            text: 'SMP RAHMAT',
+                            strokeColor: Colors.black,
+                            strokeWidth: 4,
+                            textStyle: TextStyle(
+                              fontFamily: 'Times New Roman',
+                              color: Colors.green,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.5,
+                              wordSpacing: 0.5,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black,
+                                  offset: Offset(2, 3),
+                                  blurRadius: 0.5,
+                                ),
+                              ],
+                            ),
+                          ),
+                          StrokeText(
+                            text: 'SURABAYA',
+                            strokeColor: Colors.black,
+                            strokeWidth: 4,
+                            textStyle: TextStyle(
+                              fontFamily: 'Times New Roman',
+                              color: Colors.green,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.5,
+                              wordSpacing: 0.5,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black,
+                                  offset: Offset(3, 3),
+                                  blurRadius: 1.5,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
