@@ -21,16 +21,17 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     super.initState();
     animation = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 1),
     );
     fadeInFadeOut = Tween<double>(begin: 0.0, end: 1.0).animate(animation);
 
     animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
+        animation.reverse();
         Timer(
-          const Duration(seconds: 3),
+          const Duration(seconds: 1),
           () {
-            Get.to(LoginView());
+            Get.to(() => LoginView());
           },
         );
       } else if (status == AnimationStatus.dismissed) {
@@ -139,6 +140,25 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                   ),
                 ],
               ),
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        alignment: Alignment.bottomCenter,
+        width: MediaQuery.of(context).size.width,
+        height: 20,
+        color: Colors.orange,
+        child: const Center(
+          child: Text(
+            'Copyright © 2024 IT SMP RAHMAT SURABAYA',
+            style: TextStyle(
+              fontFamily: 'Times New Roman',
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.5,
+              wordSpacing: 0.5,
             ),
           ),
         ),
