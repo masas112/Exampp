@@ -21,19 +21,19 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     super.initState();
     animation = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 600),
     );
     fadeInFadeOut = Tween<double>(begin: 0.0, end: 1.0).animate(animation);
 
     animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         animation.reverse();
-        Timer(
-          const Duration(seconds: 1),
-          () {
-            Get.to(() => LoginView());
-          },
-        );
+        // Timer(
+        //   const Duration(seconds: 2),
+        //   () {
+        //     Get.to(() => LoginView());
+        //   },
+        // );
       } else if (status == AnimationStatus.dismissed) {
         animation.forward();
       }
@@ -61,9 +61,8 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/bg_orange.png'),
-            // image: AssetImage('assets/images/buriza.png'),
-            fit: BoxFit.cover,
+            image: AssetImage('assets/images/bg.png'),
+            fit: BoxFit.cover
           ),
         ),
         child: Padding(
@@ -87,7 +86,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                       image: AssetImage('assets/images/logo.png'),
                     ),
                   ),
-                  const SizedBox(height: 7),
+                  const SizedBox(height: 27),
                   Expanded(
                     flex: 1,
                     child: Container(
@@ -95,45 +94,45 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                       child: const Column(
                         children: [
                           StrokeText(
-                            text: 'SMP RAHMAT',
-                            strokeColor: Colors.black,
-                            strokeWidth: 4,
+                            text: 'UNDER CLOUD',
+                            // strokeColor: Colors.black,
+                            // strokeWidth: 4,
                             textStyle: TextStyle(
-                              fontFamily: 'Times New Roman',
-                              color: Colors.green,
+                              fontFamily: 'Futura',
+                              color: Colors.white,
                               fontSize: 22,
                               fontWeight: FontWeight.w900,
-                              letterSpacing: 0.5,
-                              wordSpacing: 0.5,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black,
-                                  offset: Offset(2, 3),
-                                  blurRadius: 0.5,
-                                ),
-                              ],
+                              letterSpacing: 1.5,
+                              wordSpacing: 2,
+                              // shadows: [
+                              //   Shadow(
+                              //     color: Colors.black,
+                              //     offset: Offset(2, 3),
+                              //     blurRadius: 0.5,
+                              //   ),
+                              // ],
                             ),
                           ),
-                          StrokeText(
-                            text: 'SURABAYA',
-                            strokeColor: Colors.black,
-                            strokeWidth: 4,
-                            textStyle: TextStyle(
-                              fontFamily: 'Times New Roman',
-                              color: Colors.green,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 0.5,
-                              wordSpacing: 0.5,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black,
-                                  offset: Offset(3, 3),
-                                  blurRadius: 1.5,
-                                ),
-                              ],
-                            ),
-                          ),
+                          // StrokeText(
+                          //   text: 'SURABAYA',
+                          //   strokeColor: Colors.black,
+                          //   strokeWidth: 4,
+                          //   textStyle: TextStyle(
+                          //     fontFamily: 'Times New Roman',
+                          //     color: Colors.green,
+                          //     fontSize: 22,
+                          //     fontWeight: FontWeight.w900,
+                          //     letterSpacing: 0.5,
+                          //     wordSpacing: 0.5,
+                          //     shadows: [
+                          //       Shadow(
+                          //         color: Colors.black,
+                          //         offset: Offset(3, 3),
+                          //         blurRadius: 1.5,
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -148,7 +147,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
         alignment: Alignment.bottomCenter,
         width: MediaQuery.of(context).size.width,
         height: 20,
-        color: Colors.orange,
+        color: Colors.black,
         child: const Center(
           child: Text(
             'Copyright © 2024 IT SMP RAHMAT SURABAYA',

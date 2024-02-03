@@ -16,7 +16,7 @@ class ButtonGlobal extends StatelessWidget {
         height: 55,
         decoration: BoxDecoration(
             color: GlobalColors.mainColor,
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(23),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
