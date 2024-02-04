@@ -28,12 +28,12 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         animation.reverse();
-        // Timer(
-        //   const Duration(seconds: 2),
-        //   () {
-        //     Get.to(() => LoginView());
-        //   },
-        // );
+        Timer(
+          const Duration(seconds: 2),
+          () {
+            Get.to(() => LoginView());
+          },
+        );
       } else if (status == AnimationStatus.dismissed) {
         animation.forward();
       }
